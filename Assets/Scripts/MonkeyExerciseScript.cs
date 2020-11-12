@@ -219,31 +219,92 @@ public class MonkeyExerciseScript : MonoBehaviour
             // YOUR CODE - BEGIN
             case 0: // transform monkey 0
                 // get the local transformation of this Game Object by creating a TRS matrix
-                Matrix4x4 localMat = Matrix4x4.identity;
+                Matrix4x4 localMat = Matrix4x4.TRS(monkey0.transform.position,
+                                                   monkey0.transform.localRotation,
+                                                   monkey0.transform.localScale);
 
                 // define input matrices for input accumulation (there can be multiple input matrices of each kind - translation, rotatation, and scale)
-                Matrix4x4 transInputMat = Matrix4x4.identity;
+                Matrix4x4 transInputMat = Matrix4x4.Translate(new Vector3(0, 0, -8));
+                Matrix4x4 rotateWorldCoordinateMat = Matrix4x4.Rotate(Quaternion.Euler(0, 0, 0));
+                Matrix4x4 rotateInputMat = Matrix4x4.Rotate(Quaternion.Euler(0, 0, 0));
+                Matrix4x4 scaleInputMat = Matrix4x4.Scale(new Vector3(1, 1, 1));
 
                 // accumulate inputs through multiplication of your input matrices to the local transformation matrix of this Game Object 
                 // be careful with the order of operations; matrix multiplication is not commutative
-                Matrix4x4 newMat = Matrix4x4.identity * Matrix4x4.identity;
+                Matrix4x4 newMat = localMat * rotateWorldCoordinateMat * transInputMat * scaleInputMat * rotateInputMat;
                 
                 // the final computed matrix is applied to transform of the given game object
                 SetTransformByMatrix(monkey0, newMat);
                 break;
             case 1: // transform monkey 1
+                localMat = Matrix4x4.TRS(monkey1.transform.position,
+                                         monkey1.transform.localRotation,
+                                         monkey1.transform.localScale);
+
+                transInputMat = Matrix4x4.Translate(new Vector3(0, 0, -8));
+                rotateWorldCoordinateMat = Matrix4x4.Rotate(Quaternion.Euler(0, -45, 0));
+                rotateInputMat = Matrix4x4.Rotate(Quaternion.Euler(0, 180, 0));
+                scaleInputMat = Matrix4x4.Scale(new Vector3(1, 1, 1));
+
+
+                newMat = localMat * rotateWorldCoordinateMat * transInputMat * scaleInputMat * rotateInputMat;
+                SetTransformByMatrix(monkey1, newMat);
 
                 break;
             case 2: // transform monkey 2
+                localMat = Matrix4x4.TRS(monkey2.transform.position,
+                                         monkey2.transform.localRotation,
+                                         monkey2.transform.localScale);
 
+                transInputMat = Matrix4x4.Translate(new Vector3(0, 0, -8));
+                rotateWorldCoordinateMat = Matrix4x4.Rotate(Quaternion.Euler(0, -90, 0));
+                rotateInputMat = Matrix4x4.Rotate(Quaternion.Euler(0, 0, 90));
+                scaleInputMat = Matrix4x4.Scale(new Vector3(1, 1, 1));
+
+                newMat = localMat * rotateWorldCoordinateMat * transInputMat * scaleInputMat * rotateInputMat;
+                SetTransformByMatrix(monkey2, newMat);
                 break;
             case 3: // transform monkey 3
+                localMat = Matrix4x4.TRS(monkey3.transform.position,
+                                         monkey3.transform.localRotation,
+                                         monkey3.transform.localScale);
 
+                transInputMat = Matrix4x4.Translate(new Vector3(0, 3, -8));
+                rotateWorldCoordinateMat = Matrix4x4.Rotate(Quaternion.Euler(0, -135, 0));
+                scaleInputMat = Matrix4x4.Scale(new Vector3(3, 3, 3));
+                rotateInputMat = Matrix4x4.Rotate(Quaternion.Euler(0, -45, 315));
+
+                newMat = localMat * rotateWorldCoordinateMat * transInputMat * scaleInputMat * rotateInputMat;
+                SetTransformByMatrix(monkey3, newMat);
                 break;
+
+     
             case 4: // transform monkey 4
+                localMat = Matrix4x4.TRS(monkey4.transform.position,
+                                         monkey4.transform.localRotation,
+                                         monkey4.transform.localScale);
+
+                transInputMat = Matrix4x4.Translate(new Vector3(0, 5, 5));
+                rotateWorldCoordinateMat = Matrix4x4.Rotate(Quaternion.Euler(0, -180, 0));
+                scaleInputMat = Matrix4x4.Scale(new Vector3(2, 2, 2));
+                rotateInputMat = Matrix4x4.Rotate(Quaternion.Euler(45, 0, 0));
+
+                newMat = localMat * rotateWorldCoordinateMat * transInputMat * scaleInputMat * rotateInputMat;
+                SetTransformByMatrix(monkey4, newMat);
 
                 break;
             case 5: // transform monkey 5
+                localMat = Matrix4x4.TRS(monkey5.transform.position,
+                                        monkey5.transform.localRotation,
+                                        monkey5.transform.localScale);
+
+                transInputMat = Matrix4x4.Translate(new Vector3(0, 5, 0));
+                rotateWorldCoordinateMat = Matrix4x4.Rotate(Quaternion.Euler(0, -225, 0));
+                scaleInputMat = Matrix4x4.Scale(new Vector3(2, 2, 2));
+                rotateInputMat = Matrix4x4.Rotate(Quaternion.Euler(0, 180, 180));
+
+                newMat = localMat * rotateWorldCoordinateMat * transInputMat * scaleInputMat * rotateInputMat;
+                SetTransformByMatrix(monkey5, newMat);
 
                 break;
             // YOUR CODE - END
