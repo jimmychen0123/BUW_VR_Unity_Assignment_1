@@ -164,23 +164,42 @@ public class MonkeyExerciseScript : MonoBehaviour
         switch (monkeyIndex)
         {
             // YOUR CODE - BEGIN
-            case 0: // transform monkey 0
+            /*
+             * Reference: https://docs.unity3d.com/ScriptReference/Transform.Translate.html
+             *            https://docs.unity3d.com/ScriptReference/Transform.html
+             */
 
+            //set translation movement applied relative to the world coordinate system.
+            //set rotation by using local space and axes of the GameObject
+
+            case 0: // transform monkey 0
+               
+                monkey0.transform.Translate(0, 0, -8, Space.World);
                 break;
             case 1: // transform monkey 1
-
+                monkey1.transform.Translate(0, 0, -8, Space.World);
+                monkey1.transform.Rotate(0, 135, 0, Space.Self);
                 break;
             case 2: // transform monkey 2
-
+                monkey2.transform.Translate(0, 0, -8, Space.World);
+                monkey2.transform.Rotate(0, -90, 90, Space.Self);
                 break;
             case 3: // transform monkey 3
+                monkey3.transform.Translate(0, 3, -8, Space.World);
+                monkey3.transform.Rotate(0, -180, 315, Space.Self);
+                monkey3.transform.localScale = new Vector3(3, 3, 3);
 
                 break;
             case 4: // transform monkey 4
+                monkey4.transform.Translate(0, 5, 5, Space.World);
+                monkey4.transform.Rotate(45, -180, 0, Space.Self);
+                monkey4.transform.localScale = new Vector3(2, 2, 2);
 
                 break;
             case 5: // transform monkey 5
-
+                monkey5.transform.Translate(0, 5, 0, Space.World);
+                monkey5.transform.Rotate(0, -45, 180, Space.Self);
+                monkey5.transform.localScale = new Vector3(2, 2, 2);
                 break;
             // YOUR CODE - END
             default:
