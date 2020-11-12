@@ -117,21 +117,32 @@ public class MonkeyExerciseScript : MonoBehaviour
         {
             case 0: // transform monkey 0
                 monkey0.transform.localPosition = new Vector3(0, 5, -8);
+               
                 break;
             // YOUR CODE - BEGIN
             case 1: // transform monkey 1
-
+                monkey1.transform.localPosition = new Vector3(5, 5, -8);
+                monkey1.transform.localRotation = Quaternion.Euler(0, 180, 0);
                 break;
             case 2: // transform monkey 2
-
+                monkey2.transform.localPosition = new Vector3(10, 5, -8);
+                monkey2.transform.localRotation = Quaternion.Euler(0, 0, 90);
                 break;
             case 3: // transform monkey 3
-
+                monkey3.transform.localPosition = new Vector3(15, 8, -8);
+                monkey3.transform.localRotation = Quaternion.Euler(0, -45, -45);
+                monkey3.transform.localScale = new Vector3(3, 3, 3);
                 break;
             case 4: // transform monkey 4
+                monkey4.transform.localPosition = new Vector3(20,10, 5);
+                monkey4.transform.localRotation = Quaternion.Euler(45, 0, 0);
+                monkey4.transform.localScale = new Vector3(2, 2, 2);
 
                 break;
             case 5: // transform monkey 5
+                monkey5.transform.localPosition = new Vector3(25, 10, 0);
+                monkey5.transform.localRotation = Quaternion.Euler(0, 180, 180);
+                
 
                 break;
             // YOUR CODE - END
