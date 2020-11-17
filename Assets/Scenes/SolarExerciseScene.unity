@@ -339,6 +339,7 @@ GameObject:
   - component: {fileID: 517681655}
   - component: {fileID: 517681654}
   - component: {fileID: 517681653}
+  - component: {fileID: 517681656}
   m_Layer: 0
   m_Name: MoonGeometry
   m_TagString: Untagged
@@ -354,8 +355,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 517681651}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalPosition: {x: 3, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 304656361}
   m_RootOrder: 0
@@ -420,6 +421,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 517681651}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &517681656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517681651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c894882b4b90040bd9ee523fd9a9d25b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 30
 --- !u!1 &684971542
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,6 +446,7 @@ GameObject:
   - component: {fileID: 684971546}
   - component: {fileID: 684971545}
   - component: {fileID: 684971544}
+  - component: {fileID: 684971547}
   m_Layer: 0
   m_Name: EarthGeometry
   m_TagString: Untagged
@@ -448,7 +463,7 @@ Transform:
   m_GameObject: {fileID: 684971542}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 1979976922}
   m_RootOrder: 0
@@ -513,6 +528,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 684971542}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &684971547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684971542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c894882b4b90040bd9ee523fd9a9d25b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 5
 --- !u!1 &712486872
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,6 +585,7 @@ GameObject:
   - component: {fileID: 776632268}
   - component: {fileID: 776632267}
   - component: {fileID: 776632266}
+  - component: {fileID: 776632269}
   m_Layer: 0
   m_Name: SunGeometry
   m_TagString: Untagged
@@ -638,6 +667,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 776632264}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &776632269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776632264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c894882b4b90040bd9ee523fd9a9d25b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 4
 --- !u!1 &944251897
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,6 +689,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 944251898}
+  - component: {fileID: 944251899}
   m_Layer: 0
   m_Name: Moon
   m_TagString: Untagged
@@ -662,13 +705,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 944251897}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 304656361}
   m_Father: {fileID: 1484560106}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &944251899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944251897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c6d6a6cf33104bf4b3b5db9a9834df9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetToRotateAround: {fileID: 684971542}
+  orbitSpeed: 30
 --- !u!1 &1484560105
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,6 +735,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1484560106}
+  - component: {fileID: 1484560107}
   m_Layer: 0
   m_Name: Earth
   m_TagString: Untagged
@@ -693,7 +751,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1484560105}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalPosition: {x: 8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1979976922}
@@ -701,6 +759,20 @@ Transform:
   m_Father: {fileID: 712486876}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1484560107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484560105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c6d6a6cf33104bf4b3b5db9a9834df9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetToRotateAround: {fileID: 776632264}
+  orbitSpeed: 5
 --- !u!1 &1619829505
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,7 +783,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1619829506}
   - component: {fileID: 1619829507}
-  - component: {fileID: 1619829508}
   m_Layer: 0
   m_Name: SolarExercise
   m_TagString: Untagged
@@ -745,18 +816,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d388062841b144549a9d2f82961041be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1619829508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1619829505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c894882b4b90040bd9ee523fd9a9d25b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1979976921
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,6 +825,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1979976922}
+  - component: {fileID: 1979976923}
   m_Layer: 0
   m_Name: EarthAxis
   m_TagString: Untagged
@@ -788,3 +848,16 @@ Transform:
   m_Father: {fileID: 1484560106}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1979976923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979976921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc6443722dde3420681c3580ee11b8bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiltAngle: 23.5
