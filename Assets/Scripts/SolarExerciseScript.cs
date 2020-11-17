@@ -30,6 +30,7 @@ public class SolarExerciseScript : MonoBehaviour
         earth = GameObject.Find("Earth");
         moon = GameObject.Find("Moon");
 
+        //used in task 1.7 to get the access the variable of the rotation veloctiy
         componentScriptInSunGO = sun.GetComponentInChildren<Component>();
         componentScriptInEarthGO = earth.GetComponentInChildren<Component>();
         componentScriptInMoonGO = moon.GetComponentInChildren<Component>();
@@ -78,6 +79,8 @@ public class SolarExerciseScript : MonoBehaviour
     void RotateAroundParent(GameObject go, float rotationVelocity)
     {
         // YOUR CODE - BEGIN
+        //Reference: https://docs.unity3d.com/ScriptReference/Transform-parent.html
+
         go.transform.RotateAround(go.transform.parent.position, Vector3.up, Time.deltaTime * rotationVelocity );
 
         // YOUR CODE - END
