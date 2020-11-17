@@ -120,6 +120,12 @@ public class MonkeyExerciseScript : MonoBehaviour
                
                 break;
             // YOUR CODE - BEGIN
+            /*
+             * Transform that has no parent implicitly has the worldspace as parent and position
+             * localPosition: Position of the transform relative to the parent transform.
+             * localRotation: The rotation of the transform relative to the transform rotation of the parent.
+             * localScale: The scale of the transform relative to the GameObjects parent.
+             */
             case 1: // transform monkey 1
                 monkey1.transform.localPosition = new Vector3(5, 5, -8);
                 monkey1.transform.localRotation = Quaternion.Euler(0, 180, 0);
@@ -167,14 +173,18 @@ public class MonkeyExerciseScript : MonoBehaviour
             /*
              * Reference: https://docs.unity3d.com/ScriptReference/Transform.Translate.html
              *            https://docs.unity3d.com/ScriptReference/Transform.html
+             * Since some monkeys' local coordiante axes are tilted due to rotation, set Space.World so the the movement is applied relative to the world coordinate system.
+             * and set rotation by using local space and axes of the GameObject.
+             * 
+             * Translate: Moves the transform in the direction and distance of translation
+             * Rotate: The implementation of this method applies a rotation of zAngle degrees around the z axis, xAngle degrees around the x axis, and yAngle degrees around the y axis (in that order).
+             * Rotate can have the euler angle specified in 3 floats for x, y, and z.
+             * localScale: The scale of the transform relative to the GameObjects parent.
              */
-
-            //set translation movement applied relative to the world coordinate system.
-            //set rotation by using local space and axes of the GameObject
 
             case 0: // transform monkey 0
                
-                monkey0.transform.Translate(0, 0, -8, Space.Self);
+                monkey0.transform.Translate(0, 0, -8, Space.World);
                 break;
             case 1: // transform monkey 1
                 monkey1.transform.Translate(0, 0, -8, Space.World);
@@ -187,19 +197,25 @@ public class MonkeyExerciseScript : MonoBehaviour
             case 3: // transform monkey 3
                 monkey3.transform.Translate(0, 3, -8, Space.World);
                 monkey3.transform.Rotate(0, -180, 315, Space.Self);
-                monkey3.transform.localScale = new Vector3(3, 3, 3);
+                monkey3.transform.localScale = new Vector3(monkey3.transform.lossyScale.x * 3,
+                                                           monkey3.transform.lossyScale.y * 3,
+                                                           monkey3.transform.lossyScale.z * 3);
 
                 break;
             case 4: // transform monkey 4
                 monkey4.transform.Translate(0, 5, 5, Space.World);
                 monkey4.transform.Rotate(45, -180, 0, Space.Self);
-                monkey4.transform.localScale = new Vector3(2, 2, 2);
+                monkey4.transform.localScale = new Vector3(monkey4.transform.lossyScale.x * 2,
+                                                           monkey4.transform.lossyScale.y * 2,
+                                                           monkey4.transform.lossyScale.z * 2);
 
                 break;
             case 5: // transform monkey 5
                 monkey5.transform.Translate(0, 5, 0, Space.World);
                 monkey5.transform.Rotate(0, -45, 180, Space.Self);
-                monkey5.transform.localScale = new Vector3(2, 2, 2);
+                monkey5.transform.localScale = new Vector3(monkey5.transform.lossyScale.x * 2,
+                                                           monkey5.transform.lossyScale.y * 2,
+                                                           monkey5.transform.lossyScale.z * 2);
                 break;
             // YOUR CODE - END
             default:
@@ -244,15 +260,23 @@ public class MonkeyExerciseScript : MonoBehaviour
                                          monkey1.transform.localRotation,
                                          monkey1.transform.localScale);
 
+                //https://docs.unity3d.com/ScriptReference/Matrix4x4.Translate.html
+                //Creates a translation matrix, relative to local coordinate axis
                 transInputMat = Matrix4x4.Translate(new Vector3(0, 0, -8));
+                //rotating the monkeys back to world coordinate axis for the convenience to translate gameobject  
                 rotateWorldCoordinateMat = Matrix4x4.Rotate(Quaternion.Euler(0, -45, 0));
+                //rotate the monkeys based on the world coordinate axis
                 rotateInputMat = Matrix4x4.Rotate(Quaternion.Euler(0, 180, 0));
                 Debug.Log("rotateInput: \n" + rotateInputMat);
-
-
                 scaleInputMat = Matrix4x4.Scale(new Vector3(1, 1, 1));
 
-
+                /*
+                 * The order of transform is: 
+                 * 1. rotating the monkeys back to world coordinate axis
+                 * 2. translation of gameobject 
+                 * 3. scale of gameobject
+                 * 4. rotating the monkeys again
+                 */
                 newMat = localMat * rotateWorldCoordinateMat * transInputMat * scaleInputMat * rotateInputMat;
                 SetTransformByMatrix(monkey1, newMat);
 
@@ -351,6 +375,7 @@ public class MonkeyExerciseScript : MonoBehaviour
 
                 //Matrix4x4 newMat = MultiplyMatrix(Matrix4x4.identity, Matrix4x4.identity);
                 //Matrix4x4 newMat = localMat * rotateWorldCoordinateMat * transInputMat * scaleInputMat * rotateInputMat;
+                //The order is based on the task 1.3
                 Matrix4x4 newMat = MultiplyMatrix(
                                     MultiplyMatrix(
                                         MultiplyMatrix(
@@ -518,12 +543,14 @@ public class MonkeyExerciseScript : MonoBehaviour
     {
         Matrix4x4 mat = Matrix4x4.identity;
         // YOUR CODE - BEGIN
+        //initiate four Vector3 variables then create a dictionary so which axis rotated around is identified by the last three parameters. 
         Vector3 aroundWhichAxix = new Vector3(ax_x, ax_y, ax_z);
         Vector3 xAxisIdentifier = new Vector3(1, 0, 0);
         Vector3 yAxisIdentifier = new Vector3(0, 1, 0);
         Vector3 zAxisIdentifier = new Vector3(0, 0, 1);
 
         //https://www.mathsisfun.com/geometry/radians.html
+        //c# take radian not angle degrees
         float radian = Mathf.PI * degrees / 180;
 
         Dictionary<Vector3, string> axisIdentifier = new Dictionary<Vector3, string>();
@@ -573,10 +600,6 @@ public class MonkeyExerciseScript : MonoBehaviour
         mat.SetColumn(1, new Vector4(0, sy, 0, 0));
         mat.SetColumn(2, new Vector4(0, 0, sz, 0));
         mat.SetColumn(3, new Vector4(0, 0, 0, 1));
-
-
-
-
         // YOUR CODE - END
         return mat;
     }
@@ -588,14 +611,16 @@ public class MonkeyExerciseScript : MonoBehaviour
         //Check if both matrices are valid
         if(false)
         {
-
+            // I don't know how to check if the arguments are 4 by 4 matrices 
             Console.WriteLine("Multiplication not possible: invalid TRS matrices");
 
         }
+        //Reference: https://www.tutorialspoint.com/chash-program-to-multiply-two-matrices
         else
         {
             int row = 4, column = 4, i, j;
-            
+
+            //print out two readable matrices
             Console.WriteLine("Matrix lhs:");
             for (i = 0; i < row; i++)
             {
@@ -614,18 +639,19 @@ public class MonkeyExerciseScript : MonoBehaviour
                 }
                 Console.WriteLine();
             }
-            //float[,] c = new float[row, column];
+            //obtain the product of matrices 
             for (i = 0; i < row; i++)
             {
                 for (j = 0; j < column; j++)
                 {
-                    //c[i, j] = 0;
+                    
                     for (int k = 0; k < column; k++)
                     {
                         mat[i, j] += lhs[i, k] * rhs[k, j];
                     }
                 }
             }
+            //print out the final matrix
             Console.WriteLine("The product of the two matrices is :");
             for (i = 0; i < row; i++)
             {
