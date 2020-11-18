@@ -197,25 +197,20 @@ public class MonkeyExerciseScript : MonoBehaviour
             case 3: // transform monkey 3
                 monkey3.transform.Translate(0, 3, -8, Space.World);
                 monkey3.transform.Rotate(0, -180, 315, Space.Self);
-                monkey3.transform.localScale = new Vector3(monkey3.transform.lossyScale.x * 3,
-                                                           monkey3.transform.lossyScale.y * 3,
-                                                           monkey3.transform.lossyScale.z * 3);
+                monkey3.transform.localScale = new Vector3(3, 3, 3);
+                      
 
                 break;
             case 4: // transform monkey 4
                 monkey4.transform.Translate(0, 5, 5, Space.World);
                 monkey4.transform.Rotate(45, -180, 0, Space.Self);
-                monkey4.transform.localScale = new Vector3(monkey4.transform.lossyScale.x * 2,
-                                                           monkey4.transform.lossyScale.y * 2,
-                                                           monkey4.transform.lossyScale.z * 2);
+                monkey4.transform.localScale = new Vector3(2, 2, 2);
 
                 break;
             case 5: // transform monkey 5
                 monkey5.transform.Translate(0, 5, 0, Space.World);
                 monkey5.transform.Rotate(0, -45, 180, Space.Self);
-                monkey5.transform.localScale = new Vector3(monkey5.transform.lossyScale.x * 2,
-                                                           monkey5.transform.lossyScale.y * 2,
-                                                           monkey5.transform.lossyScale.z * 2);
+                monkey5.transform.localScale = new Vector3(2, 2, 2);
                 break;
             // YOUR CODE - END
             default:

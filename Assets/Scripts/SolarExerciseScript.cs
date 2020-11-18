@@ -81,8 +81,8 @@ public class SolarExerciseScript : MonoBehaviour
         }
 
         // Comment in for exercise 1.8
-        RotateAroundParent(earth, 20);
-        RotateAroundParent(moon, 10);
+        //RotateAroundParent(earth, 20);
+        //RotateAroundParent(moon, 10);
     }
 
     // Exercise 1.8
