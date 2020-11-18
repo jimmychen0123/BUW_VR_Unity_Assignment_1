@@ -63,10 +63,20 @@ public class SolarExerciseScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             // YOUR CODE - BEGIN
-            componentScriptInSunGO.rotateSpeed -= 1;
-            componentScriptInEarthGO.rotateSpeed -= 1;
-            componentScriptInMoonGO.rotateSpeed -= 1;
-
+            if (componentScriptInSunGO.rotateSpeed >= 1) 
+            {
+                componentScriptInSunGO.rotateSpeed -= 1;
+            }
+            
+            if (componentScriptInEarthGO.rotateSpeed >= 1) 
+            {
+                componentScriptInEarthGO.rotateSpeed -= 1;
+            }   
+            
+            if (componentScriptInMoonGO.rotateSpeed >= 1) 
+            {
+                componentScriptInMoonGO.rotateSpeed -= 1;
+            }   
             // YOUR CODE - END
         }
 
